@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Matière{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% if subject.subject %}
+            <h3>chapitres</h3>
+        {% endif %}
+        <h3>leçons</h3>
+        {% for lesson in subject.lessons %}
+            {% include 'partials/card_lesson.html.twig' %}
+        {% endfor %}
+    </div>
+{% endblock %}

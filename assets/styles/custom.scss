@@ -1,15 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
 
+$lightGreen: #AED6BF;
 $regularGreen: #68BC8D;
 $darkGreen: #1B4332;
+
+$light: #EDF2F4;
 
 * {
   margin: 0;
   padding: 0 !important;
 }
 
+h3, h4, h5 {
+  font-weight: 700;
+}
+
 body {
   font-family: 'Baloo 2', cursive;
+  color: $darkGreen;
+  font-weight: 500;
 
   a {
     text-decoration: none;
@@ -35,5 +44,18 @@ body {
     .title-bicolor-dark {
       color: $darkGreen;
     }
+  }
+}
+
+.card-lesson {
+  background: $lightGreen;
+  border-radius: 15px;
+
+  h5 {
+    color: $light;
+  }
+
+  .date-created {
+    font-weight: 400;
   }
 }
