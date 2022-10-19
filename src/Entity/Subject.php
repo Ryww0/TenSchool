@@ -25,9 +25,13 @@ class Subject
     #[ORM\OneToMany(mappedBy: 'subject', targetEntity: self::class)]
     private Collection $subjects;
 
+    #[ORM\OneToMany(mappedBy: 'subject', targetEntity: Lesson::class)]
+    private Collection $lessons;
+
     public function __construct()
     {
         $this->subjects = new ArrayCollection();
+        $this->lessons = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -83,6 +87,36 @@ class Subject
             // set the owning side to null (unless already changed)
             if ($subject->getSubject() === $this) {
                 $subject->setSubject(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Lesson>
+     */
+    public function getLessons(): Collection
+    {
+        return $this->lessons;
+    }
+
+    public function addLesson(Lesson $lesson): self
+    {
+        if (!$this->lessons->contains($lesson)) {
+            $this->lessons->add($lesson);
+            $lesson->setSubject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLesson(Lesson $lesson): self
+    {
+        if ($this->lessons->removeElement($lesson)) {
+            // set the owning side to null (unless already changed)
+            if ($lesson->getSubject() === $this) {
+                $lesson->setSubject(null);
             }
         }
 
