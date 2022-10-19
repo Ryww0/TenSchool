@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
 
+// colors
 $lightGreen: #AED6BF;
 $regularGreen: #68BC8D;
 $darkGreen: #1B4332;
-
 $light: #EDF2F4;
+
+// height & width
+$navbarHeight: 100px;
 
 * {
   margin: 0;
@@ -19,6 +22,8 @@ body {
   font-family: 'Baloo 2', cursive;
   color: $darkGreen;
   font-weight: 500;
+  background-color: $light;
+  padding-top: $navbarHeight !important;
 
   a {
     text-decoration: none;
@@ -26,9 +31,13 @@ body {
 }
 
 .navbar {
-  height: 100px;
+  height: $navbarHeight;
   border-bottom: $regularGreen 5px solid;
   backdrop-filter: blur(4px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
 
   img {
     height: 100px;
@@ -42,6 +51,7 @@ body {
       color: $regularGreen;
     }
 
+
     .title-bicolor-dark {
       color: $darkGreen;
     }
@@ -51,6 +61,8 @@ body {
 .card-lesson {
   background: $lightGreen;
   border-radius: 15px;
+  box-shadow: inset 22px 22px 12px #a9d0b9,
+  inset -22px -22px 12px #b3dcc5;
 
   h5 {
     color: $light;
@@ -68,6 +80,8 @@ body {
   width: $width;
   height: 70px;
   border-radius: 70px;
+  box-shadow:  4px 4px 4px rgba(104, 188, 141, 0.34),
+  -4px -4px 10px #fff;
 
   a {
     color: $light;
@@ -85,4 +99,8 @@ body {
     font-weight: 400;
     font-size: 16px;
   }
+}
+
+.test {
+  height: 1500px;
 }
