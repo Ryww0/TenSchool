@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap');
+
+$regularGreen: #68BC8D;
+$darkGreen: #1B4332;
+
+* {
+  margin: 0;
+  padding: 0 !important;
+}
+
+body {
+  font-family: 'Baloo 2', cursive;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 800;
+
+  .title-bicolor-light {
+    color: $regularGreen;
+  }
+
+  .title-bicolor-dark {
+    color: $darkGreen;
+  }
+}
+
+.navbar {
+  height: 100px;
+  border-bottom: $regularGreen 5px solid;
+
+  img {
+    height: 100px;
+  }
+}
