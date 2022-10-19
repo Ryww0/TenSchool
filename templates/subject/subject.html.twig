@@ -4,10 +4,13 @@
 
 {% block body %}
     <div class="container">
-        {% if subject.subject %}
-            <h3>chapitres</h3>
+        {% if subject.subjects is not empty %}
+            <h3>Chapitres</h3>
+            {% for chapter in subject.subjects %}
+                {% include 'partials/card_chapter.html.twig' %}
+            {% endfor %}
         {% endif %}
-        <h3>leçons</h3>
+        <h3 class="mt-5">Leçons</h3>
         {% for lesson in subject.lessons %}
             {% include 'partials/card_lesson.html.twig' %}
         {% endfor %}
