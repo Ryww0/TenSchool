@@ -10,3 +10,13 @@ import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
+
+const navSubjectsContainer = document.querySelector('.nav-subjects-all');
+const btnSubjectsNav = document.querySelector('.btn-nav-subjects');
+
+navSubjectsContainer.addEventListener('mouseover', () => {
+    navSubjectsContainer.classList.toggle('left-nav-subjects')
+});
+navSubjectsContainer.addEventListener('mouseout', () => {
+    navSubjectsContainer.classList.toggle('left-nav-subjects')
+});

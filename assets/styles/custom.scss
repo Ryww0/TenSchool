@@ -3,11 +3,13 @@
 // colors
 $lightGreen: #AED6BF;
 $regularGreen: #68BC8D;
+$regularGreenAlpha: rgba(104, 188, 141, 0.9);
 $darkGreen: #1B4332;
+$darkGreenAlpha: rgba(27, 67, 50, 0.9);
 $light: #EDF2F4;
 
 // height & width
-$navbarHeight: 100px;
+$navbarHeight: 10vh;
 
 * {
   margin: 0;
@@ -80,7 +82,7 @@ body {
   width: $width;
   height: 70px;
   border-radius: 70px;
-  box-shadow:  4px 4px 4px rgba(104, 188, 141, 0.34),
+  box-shadow: 4px 4px 4px rgba(104, 188, 141, 0.34),
   -4px -4px 10px #fff;
 
   a {
@@ -99,6 +101,33 @@ body {
     font-weight: 400;
     font-size: 16px;
   }
+}
+
+.nav-subjects-all {
+  transform: translateX(-500px);
+  transition: 250ms ease-out;
+
+  .nav-subjects {
+    position: fixed;
+    min-height: (100vh - $navbarHeight);
+    width: 500px;
+    background-color: $regularGreenAlpha;
+    backdrop-filter: blur(4px);
+  }
+
+  .btn-nav-subjects {
+    position: fixed;
+    left: 500px;
+    height: 80px;
+    width: 30px;
+    background-color: $regularGreenAlpha;
+    border-radius: 0 10px 30px 0;
+  }
+}
+
+.left-nav-subjects {
+  transform: translateX(0);
+  //transition: 500ms ease;
 }
 
 .test {
