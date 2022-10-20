@@ -9,7 +9,7 @@
             <ul class="d-flex">
                 <li><a href="{{ path('app_subjects_subject', {subject: 1}) }}">Leçons</a></li>
                 {% if not app.user %}
-                    <li><a class="btn-regular-green" href="">se connecter</a></li>
+                    <li><a class="btn-regular-green" href="{{ path('app_login') }}">se connecter</a></li>
                 {% endif %}
             </ul>
         </div>
