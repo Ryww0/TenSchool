@@ -7,11 +7,27 @@
         </div>
         <div>
             <ul class="d-flex">
-                <li><a href="{{ path('app_subjects_subject', {subject: 1}) }}">Leçons</a></li>
                 {% if not app.user %}
                     <li><a class="btn-regular-green" href="{{ path('app_login') }}">se connecter</a></li>
                 {% endif %}
             </ul>
         </div>
     </nav>
+    <div class="nav-subjects-all d-flex position-relative">
+        <nav class="nav-subjects d-flex flex-column justify-content-end text-end">
+            <ul>
+                {% for s in get_all_subject()|sort((a,b) => b.id <=> a.id) %}
+                    {% if s.subject is empty %}
+                        <li class="nav-subjects-link pe-5 {% if subject is defined %}{% if subject.id == s.id %}subject-active{% endif %}{% endif %}"><a
+                                    href="{{ path('app_subjects_subject', {'subject': s.id}) }}">{{ s.title }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
+        <div class="d-flex align-items-center">
+            <div class="btn-nav-subjects d-flex justify-content-center align-items-center">
+                <img id="nav-subjects-caret-right" src="{{ asset('build/images/caret-right-dark.png') }}" alt="">
+            </div>
+        </div>
+    </div>
 </header>

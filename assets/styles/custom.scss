@@ -10,6 +10,7 @@ $light: #EDF2F4;
 
 // height & width
 $navbarHeight: 10vh;
+$footerHeight: 25vh;
 
 * {
   margin: 0;
@@ -18,6 +19,10 @@ $navbarHeight: 10vh;
 
 h3, h4, h5 {
   font-weight: 700;
+}
+
+ul {
+  margin: 0;
 }
 
 body {
@@ -139,6 +144,7 @@ body {
     width: 500px;
     background-color: $regularGreenAlpha;
     backdrop-filter: blur(4px);
+    box-shadow: $darkGreen 4px 0 15px;
 
     li {
       font-weight: 500;
@@ -179,6 +185,19 @@ body {
   transform: rotate(180deg);
 }
 
+footer {
+  height: $footerHeight;
+  background-color: $darkGreen;
+  color: $regularGreen;
+
+  #logo-footer {
+    height: 40px;
+  }
+}
+
+#login {
+  height: 100vh - $navbarHeight;
+}
 .test {
   height: 1500px;
 }
