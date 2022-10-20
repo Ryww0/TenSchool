@@ -3,6 +3,6 @@
         {{ chapter.title }}
     </div>
     <div class="card-chapter-link d-flex justify-content-center align-items-center">
-        <a href="">voir</a>
+        <a href="{{ path('app_subjects_subject', {'subject': chapter.id}) }}">voir</a>
     </div>
 </div>

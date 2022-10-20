@@ -12,11 +12,13 @@ import './styles/app.scss';
 import './bootstrap';
 
 const navSubjectsContainer = document.querySelector('.nav-subjects-all');
-const btnSubjectsNav = document.querySelector('.btn-nav-subjects');
+const navSubjectCaretRight = document.getElementById('nav-subjects-caret-right');
 
 navSubjectsContainer.addEventListener('mouseover', () => {
     navSubjectsContainer.classList.toggle('left-nav-subjects')
+    navSubjectCaretRight.classList.add('turn-carret-open')
 });
 navSubjectsContainer.addEventListener('mouseout', () => {
     navSubjectsContainer.classList.toggle('left-nav-subjects')
+    navSubjectCaretRight.classList.remove('turn-carret-open')
 });
