@@ -30,6 +30,10 @@ body {
   a {
     text-decoration: none;
   }
+
+  li {
+    list-style: none;
+  }
 }
 
 .navbar {
@@ -61,6 +65,24 @@ body {
     .title-bicolor-dark {
       color: $darkGreen;
     }
+  }
+
+  li {
+    margin: 0 10px;
+
+    a {
+      color: $darkGreen;
+      font-weight: 500;
+      font-size: 16px;
+    }
+  }
+
+  .btn-regular-green {
+    color: $light;
+    height: 70px;
+    padding: 5px 18px !important;
+    border-radius: 70px;
+    background-color: $regularGreen;
   }
 }
 
