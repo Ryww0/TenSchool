@@ -12,7 +12,9 @@
 </head>
 <body>
 {% include './partials/header.html.twig' %}
-{% block body %}{% endblock %}
+<main>
+    {% block body %}{% endblock %}
+</main>
 {% block javascripts %}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}

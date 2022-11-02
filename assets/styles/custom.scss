@@ -32,6 +32,10 @@ body {
   background-color: $light;
   padding-top: $navbarHeight !important;
 
+  main {
+    min-height: 100vh - $navbarHeight - $footerHeight;
+  }
+
   a {
     text-decoration: none;
   }
@@ -138,6 +142,7 @@ body {
   position: fixed !important;
   transform: translateX(-500px);
   transition: 250ms ease-out;
+  z-index: 1;
 
   .nav-subjects {
     min-height: (100vh - $navbarHeight);
@@ -189,6 +194,8 @@ footer {
   height: $footerHeight;
   background-color: $darkGreen;
   color: $regularGreen;
+  position: relative;
+  bottom: 0;
 
   #logo-footer {
     height: 40px;
@@ -197,7 +204,27 @@ footer {
 
 #login {
   height: 100vh - $navbarHeight;
-}
-.test {
-  height: 1500px;
+  background: url("../images/logo_ten_header.png") no-repeat center;
+
+  form {
+    left: 50vw;
+    margin-left: 5%;
+  }
+
+  input {
+    width: 400px;
+    height: 50px;
+    border-radius: 80px;
+    margin: 10px;
+  }
+
+  button {
+    background: $darkGreen;
+    color: $light;
+    width: 400px;
+    height: 50px;
+    border: none;
+    border-radius: 80px;
+    margin: 10px;
+  }
 }
