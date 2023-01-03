@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\LessonRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -28,6 +30,14 @@ class Lesson
 
     #[ORM\ManyToOne(inversedBy: 'lessons')]
     private ?Subject $subject = null;
+
+    #[ORM\ManyToMany(targetEntity: Classroom::class, mappedBy: 'lessons')]
+    private Collection $classrooms;
+
+    public function __construct()
+    {
+        $this->classrooms = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,6 +100,33 @@ class Lesson
     public function setSubject(?Subject $subject): self
     {
         $this->subject = $subject;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Classroom>
+     */
+    public function getClassrooms(): Collection
+    {
+        return $this->classrooms;
+    }
+
+    public function addClassroom(Classroom $classroom): self
+    {
+        if (!$this->classrooms->contains($classroom)) {
+            $this->classrooms->add($classroom);
+            $classroom->addLesson($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClassroom(Classroom $classroom): self
+    {
+        if ($this->classrooms->removeElement($classroom)) {
+            $classroom->removeLesson($this);
+        }
 
         return $this;
     }

@@ -1,0 +1,33 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Liste{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <a href="{{ path('app_admin_lesson_create') }}">Créer une nouvelle leçon</a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    titre
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for lesson in lessons %}
+                <tr>
+                    <td>
+                        {{ lesson.title }}
+                    </td>
+                    <td>
+                        {{ lesson.dateCreated|date('d/m/Y') }}
+                    </td>
+                    <td>
+                        <a href="{{ path('app_admin_lesson_delete', {'lesson': lesson.id}) }}">delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

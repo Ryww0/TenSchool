@@ -1,0 +1,11 @@
+<nav class="nav-office">
+    <div class="nav-office-header d-flex align-items-center flex-column">
+        <a href="{{ path('app_home') }}"><img src="{{ asset('build/images/ten_logo.png') }}" alt=""></a>
+        <p>tenschool</p>
+        <p>Back-office</p>
+    </div>
+    <ul>
+        <li class="nav-office-item"><a class="nav-office-link" href="{{ path('app_admin_lesson') }}">Leçons</a></li>
+        <li class="nav-office-item"><a class="nav-office-link" href="{{ path('app_admin_classroom') }}">Classes</a></li>
+    </ul>
+</nav>

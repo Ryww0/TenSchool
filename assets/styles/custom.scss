@@ -11,10 +11,16 @@ $light: #EDF2F4;
 // height & width
 $navbarHeight: 10vh;
 $footerHeight: 25vh;
+$navOfficeWidth: 20vw;
 
 * {
   margin: 0;
   padding: 0 !important;
+}
+
+h1 {
+  font-weight: 900;
+  font-size: 4.5rem;
 }
 
 h3, h4, h5 {
@@ -53,6 +59,7 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
+  z-index: 3;
 
   .nav-title {
     height: 10vh;
@@ -142,7 +149,7 @@ body {
   position: fixed !important;
   transform: translateX(-500px);
   transition: 250ms ease-out;
-  z-index: 1;
+  z-index: 1000;
 
   .nav-subjects {
     min-height: (100vh - $navbarHeight);
@@ -226,5 +233,89 @@ footer {
     border: none;
     border-radius: 80px;
     margin: 10px;
+  }
+}
+
+.nav-office {
+  height: 100vh;
+  width: $navOfficeWidth;
+  margin-top: -$navbarHeight;
+  background-color: $darkGreen;
+  color: $regularGreen;
+  position: absolute;
+
+  .nav-office-item {
+    height: 30px;
+    text-align: center;
+  }
+
+  .nav-office-link {
+    color: $regularGreen;
+  }
+
+  .nav-office-header {
+    padding: 20px 0 !important;
+    border-bottom: 1px $regularGreen solid;
+
+    img {
+      height: 50px;
+    }
+  }
+}
+
+.office {
+  width: 100vw - $navOfficeWidth;
+  margin-left: auto;
+}
+
+.home-welcome {
+  height: 400px;
+  margin: 200px 0;
+  background: url("../images/ten_logo.png") no-repeat center;
+  background-size: contain;
+
+  div {
+    width: 65%;
+  }
+}
+
+.home-accordeon {
+  //height: 80px;
+  color: #fff;
+
+  .home-accordion-container {
+  background: $lightGreen;
+  border-radius: 40px;
+    min-height: 80px;
+  }
+
+  .home-accordion-title {
+    height: 80px;
+    width: 100%;
+    background: $regularGreen;
+    border-radius: 80px;
+    padding: 0 25px !important;
+    z-index: 2;
+  }
+
+  .home-accordion-content {
+    //background: $lightGreen;
+    color: $darkGreen;
+    //top: 0;
+    //left: 0;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    z-index: 1;
+    border-radius: 40px;
+  }
+
+  svg {
+    transform: rotate(45deg);
+    cursor: pointer;
+    font-size: 10rem;
+  }
+  .svg-active {
+    transform: rotate(0deg);
+    transition: 300ms ease;
   }
 }

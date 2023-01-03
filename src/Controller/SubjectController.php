@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class SubjectController extends AbstractController {
-    #[Route('subjects/{subject}', name: 'app_subjects_subject')]
+    #[Route('subjects/{subject}', name: 'app_subjects_subject' , defaults: ['subject' => 1])]
     public function showSubject(Subject $subject, SubjectRepository $subjectRepository): Response
     {
         $s = $subjectRepository->find($subject);

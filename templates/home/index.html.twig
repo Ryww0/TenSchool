@@ -1,6 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Bienvenue{% endblock %}
+{% block title %}Bienvenue - Tenschool{% endblock %}
 
 {% block body %}
+    <div class="container">
+        <div class="home-welcome d-flex align-items-end">
+            <div class="text-end">
+                <h1>Le meilleur écosystème d'apprentissage en ligne</h1>
+                <h2>apprendre c'est partager</h2>
+            </div>
+        </div>
+
+        <div class="home-accordeon mb-5">
+            <accordion-component></accordion-component>
+        </div>
+    </div>
 {% endblock %}

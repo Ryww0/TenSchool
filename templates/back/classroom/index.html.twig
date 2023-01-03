@@ -1,0 +1,33 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Liste{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <a href="{{ path('app_admin_classroom_create') }}">Créer une nouvelle classe</a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    nom
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for classroom in classrooms %}
+                <tr>
+                    <td>
+                        {{ classroom.name }}
+                    </td>
+                    <td>
+                        <a href="{{ path('app_admin_classroom_id', {'classroom': classroom.id}) }}">voir</a>
+                    </td>
+                    <td>
+                        <a href="{{ path('app_admin_classroom_delete', {'classroom': classroom.id}) }}">delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
