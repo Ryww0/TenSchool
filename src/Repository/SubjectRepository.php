@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Subject;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -37,6 +38,37 @@ class SubjectRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function findAllSubjectWhereUserConnectedClassroomIdIsEqualToClassroomId($user) {
+        $queryBuilder = $this->createQueryBuilder('s');
+
+        $queryBuilder
+            ->select('s as subject') // I want all subjects
+            ->join("App\Entity\Lesson", "lesson", Join::WITH, 's.id = lesson.subject') // joined lesson
+            ->join('lesson.classrooms', 'classroom')
+            ->where('classroom.id = :user')
+            ->setParameter(':user', $user)
+            ->orderBy('s.id', 'DESC')
+        ;
+
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    public function noName($user, $subject) {
+        $queryBuilder = $this->createQueryBuilder('s');
+
+        $queryBuilder
+            ->select('s as subject') // I want all subjects
+            ->join("App\Entity\Lesson", "lesson", Join::WITH, 's.id = lesson.subject') // joined lesson
+            ->join('lesson.classrooms', 'classroom')
+            ->where('classroom.id = :user')
+            ->setParameter(':user', $user)
+            ->andWhere('s.id = :subject')
+            ->setParameter(':subject', $subject)
+        ;
+
+        return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 
 //    /**

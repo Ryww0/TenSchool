@@ -13,10 +13,18 @@ class SubjectController extends AbstractController {
     #[Route('subjects/{subject}', name: 'app_subjects_subject' , defaults: ['subject' => 1])]
     public function showSubject(Subject $subject, SubjectRepository $subjectRepository): Response
     {
-        $s = $subjectRepository->find($subject);
+        $user = $this->getUser()->getClassroom();
+
+
+        $sub = $subjectRepository->find($subject);
+        $ss = $subjectRepository->findAllSubjectWhereUserConnectedClassroomIdIsEqualToClassroomId($user);
+        $s = $subjectRepository->noName($user, $subject->getId());
+
+        dump($s);
 
         return $this->render('subject/subject.html.twig', [
             'subject' => $s,
+            'ss' => $ss
         ]);
     }
 }

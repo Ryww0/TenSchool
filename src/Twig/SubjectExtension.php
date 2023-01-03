@@ -3,19 +3,15 @@
 namespace App\Twig;
 
 use App\Repository\SubjectRepository;
+use Symfony\Component\Security\Core\Security;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class SubjectExtension extends AbstractExtension
 {
-    /**
-     * @var SubjectRepository
-     */
-    private SubjectRepository $subjectRepository;
 
-    public function __construct(SubjectRepository $subjectRepository)
+    public function __construct(private SubjectRepository $subjectRepository, private Security $security)
     {
-        $this->subjectRepository = $subjectRepository;
     }
 
     public function getFunctions(): array
@@ -27,6 +23,8 @@ class SubjectExtension extends AbstractExtension
 
     public function getAllSubjects(): array
     {
-        return $this->subjectRepository->findAll();
+        $user = $this->security->getUser()->getClassroom();
+
+        return $this->subjectRepository->findAllSubjectWhereUserConnectedClassroomIdIsEqualToClassroomId($user);
     }
 }

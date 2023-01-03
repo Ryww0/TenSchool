@@ -5,6 +5,7 @@
 {% block body %}
     <div class="container">
         <h1>{{ classroom.name }}</h1>
+        <h2>Liste des élèves</h2>
         <ul>
             {% for user in users %}
                 <li>{{ user.firstname }} {{ user.lastname }}</li>
