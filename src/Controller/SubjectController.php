@@ -15,8 +15,6 @@ class SubjectController extends AbstractController {
     {
         $user = $this->getUser()->getClassroom();
 
-
-        $sub = $subjectRepository->find($subject);
         $ss = $subjectRepository->findAllSubjectWhereUserConnectedClassroomIdIsEqualToClassroomId($user);
         $s = $subjectRepository->noName($user, $subject->getId());
 

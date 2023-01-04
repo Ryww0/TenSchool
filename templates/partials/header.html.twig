@@ -22,11 +22,11 @@
         <div class="nav-subjects-all d-flex position-relative">
             <nav class="nav-subjects d-flex flex-column justify-content-end text-end">
                 <ul>
-                    {% for subject in get_all_subject() %}
-                        {% for subject in subject %}
-                            {% if subject.subject is empty %}
-                                <li>
-                                    <a href="{{ path('app_subjects_subject', {'subject': subject.id}) }}">{{ subject.title }}</a>
+                    {% for subjects in get_all_subject() %}
+                        {% for s in subjects %}
+                            {% if s.subject is empty %}
+                                <li class="nav-subjects-link pe-5 {% if subject is defined %}{% if subject.subject.id == s.id %} subject-active {% endif %}{% endif %}">
+                                    <a href="{{ path('app_subjects_subject', {'subject': s.id}) }}">{{ s.title }}</a>
                                 </li>
                             {% endif %}
                         {% endfor %}
