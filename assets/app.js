@@ -11,7 +11,9 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
+// Import all my React components
 import './React/Components/Accordion'
+import './React/Components/Profil'
 
 const navSubjectsContainer = document.querySelector('.nav-subjects-all');
 const navSubjectCaretRight = document.getElementById('nav-subjects-caret-right');
