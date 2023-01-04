@@ -17,7 +17,7 @@
                 {% endfor %}
             {% endfor %}
         {% endif %}
-        {% if subject.subject.lessons is not empty %}
+        {% if subject.subject.lessons is defined %}
             {% for lesson in subject.subject.lessons %}
                 {% for classroom in lesson.classrooms %}
                     {% if classroom.id == app.user.classroom.id %}
