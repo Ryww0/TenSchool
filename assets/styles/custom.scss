@@ -301,8 +301,8 @@ footer {
   color: #fff;
 
   .home-accordion-container {
-  background: $lightGreen;
-  border-radius: 40px;
+    background: $lightGreen;
+    border-radius: 40px;
     min-height: 80px;
   }
 
@@ -331,6 +331,7 @@ footer {
     cursor: pointer;
     font-size: 10rem;
   }
+
   .svg-active {
     transform: rotate(0deg);
     transition: 300ms ease;

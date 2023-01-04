@@ -1,9 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello UserController!{% endblock %}
+{% block title %}Profil - {{ user.firstname }}{% endblock %}
 
 {% block body %}
-    {{ user.firstname}}
-    {{ user.lastname }}
+    <div class="container">
+    <h2>
+        {{ user.firstname }}
+        {{ user.lastname }}
+    </h2>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <h4> Vos classes </h4>
+        <ul>
+            {% for classroom in user.classrooms %}
+                <li>
+                    {{ classroom.name }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h4> Votre classe</h4>
+        <p>
+            {{ user.classroom.name }}
+        </p>
+    {% endif %}
+    </div>
 {% endblock %}
 
