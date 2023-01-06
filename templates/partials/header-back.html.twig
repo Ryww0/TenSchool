@@ -4,8 +4,9 @@
         <p>tenschool</p>
         <p>Back-office</p>
     </div>
-    <ul>
-        <li class="nav-office-item"><a class="nav-office-link" href="{{ path('app_admin_lesson') }}">Leçons</a></li>
-        <li class="nav-office-item"><a class="nav-office-link" href="{{ path('app_admin_classroom') }}">Classes</a></li>
+    <ul class="nav-office-menu mt-4">
+{#        <nav-office-component></nav-office-component>#}
+        <li class="nav-office-item"><a class="nav-office-link {% if app.request.pathInfo == '/admin/lesson' %}active{% endif %}" href="{{ path('app_admin_lesson') }}">Leçons</a></li>
+        <li class="nav-office-item"><a class="nav-office-link {% if app.request.pathInfo == '/admin/classroom' %}active{% endif %}" href="{{ path('app_admin_classroom') }}">Classes</a></li>
     </ul>
 </nav>

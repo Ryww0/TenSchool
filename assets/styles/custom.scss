@@ -2,6 +2,7 @@
 
 // colors
 $lightGreen: #AED6BF;
+$lightGreenAlpha: rgba(174, 214, 191, 0.3);
 $regularGreen: #68BC8D;
 $regularGreenAlpha: rgba(104, 188, 141, 0.9);
 $darkGreen: #1B4332;
@@ -11,7 +12,7 @@ $light: #EDF2F4;
 // height & width
 $navbarHeight: 10vh;
 $footerHeight: 25vh;
-$navOfficeWidth: 20vw;
+$navOfficeWidth: 16vw;
 
 * {
   margin: 0;
@@ -29,6 +30,10 @@ h3, h4, h5 {
 
 ul {
   margin: 0;
+}
+
+hr {
+  margin: 0 !important;
 }
 
 body {
@@ -264,10 +269,7 @@ footer {
   .nav-office-item {
     height: 30px;
     text-align: center;
-  }
-
-  .nav-office-link {
-    color: $regularGreen;
+    cursor: pointer;
   }
 
   .nav-office-header {
@@ -277,6 +279,31 @@ footer {
     img {
       height: 50px;
     }
+  }
+
+  .nav-office-menu {
+
+    .nav-office-item {
+
+      .nav-office-link {
+        color: $regularGreen;
+        padding: 3px 0 !important;
+        border-radius: 5px;
+        display: inline-block;
+        height: auto;
+        //width: $navOfficeWidth * 0.65;
+        width: 65%;
+      }
+
+      .active {
+        background: $lightGreenAlpha;
+      }
+    }
+  }
+
+  .nav-office-sub-menu {
+    background: $regularGreen;
+    color: $darkGreen;
   }
 }
 

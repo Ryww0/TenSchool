@@ -11,18 +11,25 @@ import './styles/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
+// the templating by react
+import './React/index';
+
 // Import all my React components
-import './React/Components/Accordion'
-import './React/Components/Profil'
+// import './React/Components/Accordion'
+// import './React/Components/Profil'
+// import './React/Components/NavOffice'
 
 const navSubjectsContainer = document.querySelector('.nav-subjects-all');
 const navSubjectCaretRight = document.getElementById('nav-subjects-caret-right');
 
-navSubjectsContainer.addEventListener('mouseover', () => {
-    navSubjectsContainer.classList.toggle('left-nav-subjects')
-    navSubjectCaretRight.classList.add('turn-carret-open')
-});
-navSubjectsContainer.addEventListener('mouseout', () => {
-    navSubjectsContainer.classList.toggle('left-nav-subjects')
-    navSubjectCaretRight.classList.remove('turn-carret-open')
-});
+if (navSubjectsContainer) {
+    navSubjectsContainer.addEventListener('mouseover', () => {
+        navSubjectsContainer.classList.toggle('left-nav-subjects')
+        navSubjectCaretRight.classList.add('turn-carret-open')
+    });
+    navSubjectsContainer.addEventListener('mouseout', () => {
+        navSubjectsContainer.classList.toggle('left-nav-subjects')
+        navSubjectCaretRight.classList.remove('turn-carret-open')
+    });
+}
+

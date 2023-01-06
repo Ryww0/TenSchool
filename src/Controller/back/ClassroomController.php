@@ -4,6 +4,7 @@ namespace App\Controller\back;
 
 use App\Entity\Classroom;
 use App\Form\ClassroomType;
+use App\Form\ClassroomUserType;
 use App\Repository\ClassroomRepository;
 use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -60,6 +61,24 @@ class ClassroomController extends AbstractController
         return $this->redirectToRoute('app_admin_classroom', [], Response::HTTP_SEE_OTHER);
     }
 
+    #[Route('/classroom/edit/{classroom}', name: 'app_admin_classroom_edit', methods: ['GET', 'POST'])]
+    public function editClassroom(Request $request, Classroom $classroom, ClassroomRepository $classroomRepository)
+    {
+        $form = $this->createForm(ClassroomUserType::class, $classroom);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $classroomRepository->save($classroom, true);
+
+            return $this->redirectToRoute('app_admin_classroom_id', ['classroom' => $classroom->getId()]);
+        }
+
+        return $this->render('back/classroom/edit-classroom.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
     #[Route('/classroom/{classroom}', name: 'app_admin_classroom_id')]
     public function showClassroom(Classroom $classroom, ClassroomRepository $classroomRepository, UserRepository $userRepository): Response
     {
@@ -72,4 +91,5 @@ class ClassroomController extends AbstractController
             'users' => $users,
         ]);
     }
+
 }
