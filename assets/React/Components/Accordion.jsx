@@ -1,6 +1,4 @@
 import React from "react";
-import {createRoot} from "react-dom/client";
-
 import AccordionElmt from "./AccordionElmt";
 
 
@@ -31,11 +29,4 @@ class Accordion extends React.Component {
     }
 }
 
-class AccordionElement extends HTMLElement {
-    connectedCallback() {
-        const root = createRoot(this)
-        root.render(<Accordion/>)
-    }
-}
-
-customElements.define('accordion-component', AccordionElement)
+export default Accordion

@@ -1,4 +1,5 @@
 import React from "react";
+import Accordion from "../Accordion";
 
 function Home() {
 
@@ -13,7 +14,7 @@ function Home() {
                 </div>
 
                 <div className="home-accordeon mb-5 position-relative">
-                    <accordion-component></accordion-component>
+                    <Accordion/>
                 </div>
             </div>
         </>
