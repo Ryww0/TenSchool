@@ -169,6 +169,7 @@ body {
 
 .nav-subjects-all {
   position: fixed !important;
+  top: $navbarHeight;
   transform: translateX(-500px);
   transition: 250ms ease-out;
   z-index: 1000;
@@ -180,6 +181,12 @@ body {
     backdrop-filter: blur(4px);
     box-shadow: $darkGreen 4px 0 15px;
 
+    .nav-subjects-link {
+
+      .active {
+          background-color: $light;
+      }
+    }
     li {
       font-weight: 500;
       font-size: 28px;
@@ -195,10 +202,6 @@ body {
       a {
         color: $darkGreen;
       }
-    }
-
-    .subject-active {
-      background-color: $light;
     }
   }
 
@@ -347,8 +350,7 @@ footer {
     color: $darkGreen;
     //top: 0;
     //left: 0;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
+    padding-top: 50px !important;
     z-index: 1;
     border-radius: 40px;
   }

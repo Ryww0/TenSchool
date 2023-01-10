@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: SubjectRepository::class)]
 class Subject
@@ -14,17 +15,22 @@ class Subject
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('subject')]
     private ?int $id = null;
 
+    #[Groups('subject')]
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[Groups('subject')]
     #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'subjects')]
     private ?self $subject = null;
 
+    #[Groups('subject_details')]
     #[ORM\OneToMany(mappedBy: 'subject', targetEntity: self::class)]
     private Collection $subjects;
 
+    #[Groups('subject')]
     #[ORM\OneToMany(mappedBy: 'subject', targetEntity: Lesson::class)]
     private Collection $lessons;
 
