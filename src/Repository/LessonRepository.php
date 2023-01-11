@@ -54,13 +54,14 @@ class LessonRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Lesson
-//    {
-//        return $this->createQueryBuilder('l')
-//            ->andWhere('l.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findAllLessonsBySubject($value)
+    {
+        return $this->createQueryBuilder('l')
+            ->join('App\Entity\Subject', 'subject')
+            ->andWhere('l.subject = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }

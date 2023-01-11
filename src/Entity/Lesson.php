@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: LessonRepository::class)]
 class Lesson
@@ -14,17 +15,22 @@ class Lesson
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('lesson')]
     private ?int $id = null;
 
+    #[Groups('lesson')]
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[Groups('lesson')]
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateCreated = null;
 
+    #[Groups('lesson')]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
+    #[Groups('lesson')]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 

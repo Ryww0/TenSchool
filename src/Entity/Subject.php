@@ -30,7 +30,6 @@ class Subject
     #[ORM\OneToMany(mappedBy: 'subject', targetEntity: self::class)]
     private Collection $subjects;
 
-    #[Groups('subject')]
     #[ORM\OneToMany(mappedBy: 'subject', targetEntity: Lesson::class)]
     private Collection $lessons;
 

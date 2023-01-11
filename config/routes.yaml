@@ -1,3 +1,9 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+_index:
+    path: /{path}
+    controller: App\Controller\HomeController::index
+_index2:
+    path: /{path}/{path2}
+    controller: App\Controller\HomeController::index
