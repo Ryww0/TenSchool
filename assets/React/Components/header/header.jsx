@@ -3,7 +3,7 @@ import {Link, NavLink} from "react-router-dom";
 
 const API_URL = 'http://localhost:8000/api';
 
-function Header() {
+function Header({imgNavbar}) {
     const [subjects, setSubjects] = useState([]);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ function Header() {
             <header>
                 <nav className="navbar pe-3">
                     <div className="d-flex align-items-center nav-title">
-                        <img src="build/images/logo_ten_header.png" alt="logo du site"/>
+                        <img src={imgNavbar} alt="logo du site"/>
                         <Link to="/"><span className="title-bicolor-light">ten</span><span
                             className="title-bicolor-dark">school</span></Link>
                     </div>
@@ -53,8 +53,8 @@ function Header() {
                         <ul>
                             {
                                 subjects.map(subject => (
-                                    <li className="nav-subjects-link pe-5">
-                                        <NavLink to={`subject/${subject.id}`}>{subject.title}</NavLink>
+                                    <li className="nav-subjects-link">
+                                        <NavLink className="pe-5" to={`subject/${subject.id}`}>{subject.title}</NavLink>
                                     </li>
                                 ))
                             }

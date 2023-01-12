@@ -19,8 +19,6 @@ const Subject = () => {
             });
     }, [subjectId]);
 
-    console.log(lessons)
-
     return (
         <>
             <div className="container mb-5">

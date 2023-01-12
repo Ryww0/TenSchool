@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const CardLesson = ({lesson}) => {
     return (
@@ -17,7 +18,9 @@ const CardLesson = ({lesson}) => {
                     <p>{lesson.description}</p>
                 </div>
                 <div className="d-flex justify-content-center mt-4">
-                    <img src="build/images/caret-down-dark.png" alt=""/>
+                    <Link to={`/lesson/${lesson.id}`}>
+                        <img src="../build/images/caret-down-dark.png" alt=""/>
+                    </Link>
                 </div>
             </div>
         </>

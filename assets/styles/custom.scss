@@ -4,6 +4,7 @@
 $lightGreen: #AED6BF;
 $lightGreenAlpha: rgba(174, 214, 191, 0.3);
 $regularGreen: #68BC8D;
+$yellow: #93d74b;
 $regularGreenAlpha: rgba(104, 188, 141, 0.9);
 $darkGreen: #1B4332;
 $darkGreenAlpha: rgba(27, 67, 50, 0.9);
@@ -182,9 +183,14 @@ body {
     box-shadow: $darkGreen 4px 0 15px;
 
     .nav-subjects-link {
-
       .active {
-          background-color: $light;
+        background-color: $darkGreen;
+        border-right: 5px solid $yellow;
+        color: $yellow;
+      }
+      a {
+        width: 100%;
+        display: inline-block;
       }
     }
     li {
@@ -193,11 +199,11 @@ body {
       padding-right: 30px;
       height: 50px;
 
-      &:not(.subject-active):hover {
-        background-color: $lightGreen;
-        opacity: 0.3;
-        filter: brightness(1.3);
-      }
+      //&:not(.active):hover {
+      //  background-color: $lightGreen;
+      //  opacity: 0.3;
+      //  filter: brightness(1.3);
+      //}
 
       a {
         color: $darkGreen;
