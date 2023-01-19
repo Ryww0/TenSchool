@@ -28,6 +28,8 @@ const Profile = () => {
             });
     }, []);
 
+    console.log(user.classroom)
+
     const id = userID;
 
     return (
@@ -51,7 +53,7 @@ const Profile = () => {
                                     }
                                 </ul>
                             ) : (
-                                <h4>Jason ta mère est une pute!</h4>
+                                <h4>{user.classroom?.name}</h4>
                             )
                         }
                     </div>
