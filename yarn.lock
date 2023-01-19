@@ -3014,6 +3014,25 @@
     "domelementtype" "^2.2.0"
     "domhandler" "^4.2.0"
 
+"dotenv-defaults@^2.0.2":
+  "integrity" "sha512-iOIzovWfsUHU91L5i8bJce3NYK5JXeAwH50Jh6+ARUdLiiGlYWfGw6UkzsYqaXZH/hjE/eCd/PlfM/qqyK0AMg=="
+  "resolved" "https://registry.npmjs.org/dotenv-defaults/-/dotenv-defaults-2.0.2.tgz"
+  "version" "2.0.2"
+  dependencies:
+    "dotenv" "^8.2.0"
+
+"dotenv-webpack@^8.0.1":
+  "integrity" "sha512-CdrgfhZOnx4uB18SgaoP9XHRN2v48BbjuXQsZY5ixs5A8579NxQkmMxRtI7aTwSiSQcM2ao12Fdu+L3ZS3bG4w=="
+  "resolved" "https://registry.npmjs.org/dotenv-webpack/-/dotenv-webpack-8.0.1.tgz"
+  "version" "8.0.1"
+  dependencies:
+    "dotenv-defaults" "^2.0.2"
+
+"dotenv@^8.2.0":
+  "integrity" "sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g=="
+  "resolved" "https://registry.npmjs.org/dotenv/-/dotenv-8.6.0.tgz"
+  "version" "8.6.0"
+
 "ecc-jsbn@~0.1.1":
   "integrity" "sha512-eh9O+hwRHNbG4BLTjEl3nw044CkGm5X6LoaCf7LPp7UU8Qrt47JYNi6nPX8xjW97TKGKm1ouctg0QSpZe9qrnw=="
   "resolved" "https://registry.npmjs.org/ecc-jsbn/-/ecc-jsbn-0.1.2.tgz"
@@ -5082,6 +5101,11 @@
   dependencies:
     "@remix-run/router" "1.2.1"
 
+"react-symfony-form@^0.0.1-alpha.10":
+  "integrity" "sha512-pntx7tCwVYpV8aDEFUHBR0+1iHMgrhsKE+4g57MFiwsOppiCbZ2wy9UJov+TZDYjlafNbczxJJtX9GnESPhrYw=="
+  "resolved" "https://registry.npmjs.org/react-symfony-form/-/react-symfony-form-0.0.1-alpha.10.tgz"
+  "version" "0.0.1-alpha.10"
+
 "react@^18.2.0", "react@>=16.8":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
@@ -6193,7 +6217,7 @@
   "resolved" "https://registry.npmjs.org/webpack-sources/-/webpack-sources-3.2.3.tgz"
   "version" "3.2.3"
 
-"webpack@^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.37.0 || ^5.0.0", "webpack@^5.0.0", "webpack@^5.1.0", "webpack@^5.72", "webpack@^5.74.0", "webpack@>=2", "webpack@>=4.0.0 <6.0.0", "webpack@>=5.0.0", "webpack@4.x.x || 5.x.x":
+"webpack@^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0", "webpack@^4 || ^5", "webpack@^4.0.0 || ^5.0.0", "webpack@^4.37.0 || ^5.0.0", "webpack@^5.0.0", "webpack@^5.1.0", "webpack@^5.72", "webpack@^5.74.0", "webpack@>=2", "webpack@>=4.0.0 <6.0.0", "webpack@>=5.0.0", "webpack@4.x.x || 5.x.x":
   "integrity" "sha512-A2InDwnhhGN4LYctJj6M1JEaGL7Luj6LOmyBHjcI8529cm5p6VXiTIW2sn6ffvEAKmveLzvu4jrihwXtPojlAA=="
   "resolved" "https://registry.npmjs.org/webpack/-/webpack-5.74.0.tgz"
   "version" "5.74.0"

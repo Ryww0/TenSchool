@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}tenschool - Connexion{% endblock %}
+{% block title %}Connexion - Tenschool{% endblock %}
 
 {% block body %}
     <section id="login" class="d-flex align-items-center">
@@ -10,9 +10,9 @@
             {% endif %}
 
             <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
-                   autocomplete="email" required autofocus>
+                   autocomplete="email" required autofocus placeholder="email">
             <input type="password" name="password" id="inputPassword" class="form-control"
-                   autocomplete="current-password" required>
+                   autocomplete="current-password" required placeholder="mot de passe">
 
             <input type="hidden" name="_csrf_token"
                    value="{{ csrf_token('authenticate') }}"

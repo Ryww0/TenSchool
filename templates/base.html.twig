@@ -11,21 +11,21 @@
 
 </head>
 <body>
-{#{% include './partials/header.html.twig' %}#}
+{# {% include './partials/header.html.twig' %} #}
 <main>
     {% block body %}{% endblock %}
 </main>
 {% block javascripts %}
     {% if app.user.id is defined %}
         <script>
-            const userID = {{ app.user.id }};
+            userID = {{ app.user.id }};
         </script>
     {% endif %}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}
-{#{% if app.request.attributes.get('_route') == 'app_login' %}#}
-{#{% else %}#}
-{#    {% include './partials/footer.html.twig' %}#}
-{#{% endif %}#}
+{# {% if app.request.attributes.get('_route') == 'app_login' %} #}
+{# {% else %} #}
+{#    {% include './partials/footer.html.twig' %} #}
+{# {% endif %} #}
 </body>
 </html>

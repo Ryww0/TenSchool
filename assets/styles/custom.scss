@@ -72,8 +72,26 @@ body {
   }
 
   .profil-dropdown-menu {
-    background: $regularGreen;
+    background-color: $regularGreen;
     padding-top: 5px !important;
+    right: 0;
+    top: 100%;
+    opacity: 100%;
+    animation: dropdown 300ms ease-in;
+
+    @keyframes dropdown {
+      0% {
+        top: 0;
+        opacity: 0;
+      }
+      35% {
+        opacity: 10%;
+      }
+      100% {
+        top: 100%;
+        opacity: 100%;
+      }
+    }
 
     li {
       padding: 5px 20px !important;
@@ -188,11 +206,13 @@ body {
         border-right: 5px solid $yellow;
         color: $yellow;
       }
+
       a {
         width: 100%;
         display: inline-block;
       }
     }
+
     li {
       font-weight: 500;
       font-size: 28px;
@@ -254,6 +274,8 @@ footer {
     height: 50px;
     border-radius: 80px;
     margin: 10px;
+    box-shadow: inset -4px -4px 8px rgba(255, 255, 255, 0.25), inset 4px 4px 8px rgba(0, 0, 0, 0.25);
+    padding: 0 15px !important;
   }
 
   button {
@@ -261,9 +283,10 @@ footer {
     color: $light;
     width: 400px;
     height: 50px;
-    border: none;
+    border: none !important;
     border-radius: 80px;
     margin: 10px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
   }
 }
 

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
+import Header from "../header/header";
 
 const API_URL = 'http://localhost:8000/api';
 
@@ -17,8 +18,6 @@ const Lesson = () => {
                 console.log(error);
             });
     }, []);
-
-    console.log(lesson.id)
 
     return (
         <>

@@ -1,16 +1,18 @@
 import React, {createRef, useEffect, useState} from "react";
 import {Link, NavLink} from "react-router-dom";
 
-const API_URL = 'http://localhost:8000/api';
+const API_URL = 'http://127.0.0.1:8000/api';
 
 function Header({imgNavbar}) {
     const [subjects, setSubjects] = useState([]);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(false);
 
+    // fetch to return all the subjects
     useEffect(() => {
         fetch(`${API_URL}/subjects`)
             .then((response) => response.json())
             .then((data) => {
-
                 setSubjects(JSON.parse(data));
             })
             .catch((error) => {
@@ -18,13 +20,40 @@ function Header({imgNavbar}) {
             });
     }, []);
 
+    // fetch to return a bool if user is admin or not
+    useEffect(() => {
+        fetch(`${API_URL}/check-admin`)
+            .then(response => response.json())
+            .then(data => {
+                setIsAdmin(data);
+            });
+    }, []);
+
+    // fetch to return a bool if user is connected or not
+    useEffect(() => {
+        fetch(`${API_URL}/check-login`)
+            .then(response => response.json())
+            .then(data => {
+                setIsLoggedIn(data);
+            });
+    }, []);
+
+
     const openNavSubjects = () => {
-        navSubjectsContainer.current.classList.toggle('left-nav-subjects')
-        navSubjectsCaret.current.classList.toggle('turn-carret-open')
+        navSubjectsContainer.current.classList.toggle('left-nav-subjects');
+        navSubjectsCaret.current.classList.toggle('turn-carret-open');
+    }
+
+    const openProfileMenu = () => {
+        profileMenu.current.classList.toggle('d-none');
+        profileMenu.current.classList.toggle('active');
     }
 
     const navSubjectsContainer = React.useRef();
     const navSubjectsCaret = React.useRef();
+    const profileMenu = React.useRef();
+
+    const id = userID;
 
     return (
         <>
@@ -37,14 +66,31 @@ function Header({imgNavbar}) {
                     </div>
                     <div>
                         <ul className="d-flex">
-                            {/*{% if is_granted('ROLE_ADMIN') %}*/}
-                            {/*<li><a href="{{ path('app_back-office') }}">Tableau de bord</a></li>*/}
-                            {/*{% endif %}*/}
-                            {/*{% if not app.user %}*/}
-                            <li><Link className="btn-regular-green" to="/login">se connecter</Link></li>
-                            {/*{% else %}*/}
-                            {/*<profile-component></profile-component>*/}
-                            {/*{% endif %}*/}
+                            {
+                                isLoggedIn ? (
+                                    <>
+                                        <li className="profil-dropdown-button"
+                                            onClick={() => openProfileMenu()}>Profil
+                                        </li>
+                                        <ul className="profil-dropdown-menu d-none position-absolute pe-3"
+                                            ref={profileMenu}>
+                                            <li><Link to={`profile/${id}`}>Mon profil</Link></li>
+                                            <hr/>
+                                            {
+                                                isAdmin && (
+                                                    <>
+                                                        <li><Link to="/admin/dashboard">Tableau de bord</Link></li>
+                                                        <hr/>
+                                                    </>
+                                                )
+                                            }
+                                            <li><a href="/logout">Se déconnecter</a></li>
+                                        </ul>
+                                    </>
+                                ) : (
+                                    <li><a className="btn-regular-green" href="/login">se connecter</a></li>
+                                )
+                            }
                         </ul>
                     </div>
                 </nav>
@@ -53,7 +99,7 @@ function Header({imgNavbar}) {
                         <ul>
                             {
                                 subjects.map(subject => (
-                                    <li className="nav-subjects-link">
+                                    <li key={subject.id} className="nav-subjects-link">
                                         <NavLink className="pe-5" to={`subject/${subject.id}`}>{subject.title}</NavLink>
                                     </li>
                                 ))

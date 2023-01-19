@@ -19,17 +19,3 @@ import './React/index';
 // import './React/Components/Profil'
 // import './React/Components/NavOffice'
 
-const navSubjectsContainer = document.querySelector('.nav-subjects-all');
-const navSubjectCaretRight = document.getElementById('nav-subjects-caret-right');
-
-if (navSubjectsContainer) {
-    navSubjectsContainer.addEventListener('mouseover', () => {
-        navSubjectsContainer.classList.toggle('left-nav-subjects')
-        navSubjectCaretRight.classList.add('turn-carret-open')
-    });
-    navSubjectsContainer.addEventListener('mouseout', () => {
-        navSubjectsContainer.classList.toggle('left-nav-subjects')
-        navSubjectCaretRight.classList.remove('turn-carret-open')
-    });
-}
-
