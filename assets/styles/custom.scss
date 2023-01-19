@@ -25,6 +25,14 @@ h1 {
   font-size: 4.5rem;
 }
 
+h3 {
+  font-size: 2.7rem;
+}
+
+h4 {
+  font-size: 1.9rem;
+}
+
 h3, h4, h5 {
   font-weight: 700;
 }
@@ -393,5 +401,28 @@ footer {
   .svg-active {
     transform: rotate(0deg);
     transition: 300ms ease;
+  }
+}
+
+.profile-page {
+  min-height: 100vh - $navbarHeight - $footerHeight !important;
+
+  .profile-container {
+
+    .profile-image-container {
+      background-color: #0c4a6e;
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+    }
+
+    .profile-infos-edit-container a {
+      height: 40px;
+      width: auto;
+      background-color: $darkGreen;
+      color: $light;
+      padding: 0 25px !important;
+      border-radius: 50px;
+    }
   }
 }
