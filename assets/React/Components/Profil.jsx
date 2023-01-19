@@ -1,6 +1,33 @@
-import React, {Component, Fragment} from "react";
+import React, {Component, Fragment, useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+
+const API_URL = 'http://127.0.0.1:8000/api';
 
 const Profile = () => {
+    const [user, setUSer] = useState([]);
+    const [isAdmin, setIsAdmin] = useState(false);
+
+    // user infos
+    useEffect(() => {
+        fetch(`${API_URL}/users/${id}`)
+            .then((response) => response.json())
+            .then((data) => {
+                setUSer(JSON.parse(data));
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
+    // admin check
+    useEffect(() => {
+        fetch(`${API_URL}/check-admin`)
+            .then(response => response.json())
+            .then(data => {
+                setIsAdmin(data);
+            });
+    }, []);
+
     const id = userID;
 
     return (
@@ -11,10 +38,22 @@ const Profile = () => {
                 <div className="profile-infos-container d-flex">
                     <div className="profile-infos-content d-flex flex-column justify-content-end me-5 ms-5">
                         <h3>
-                            <span className="text-uppercase">lastname</span> <span
-                            className="text-capitalize">firstname</span>
+                            <span className="text-uppercase">{user.lastname}</span> <span
+                            className="text-capitalize">{user.firstname}</span>
                         </h3>
-                        <h4>classe</h4>
+                        {
+                            isAdmin ? (
+                                <ul>
+                                    {
+                                        user.classrooms.map(c => (
+                                            <li>{c.name}</li>
+                                        ))
+                                    }
+                                </ul>
+                            ) : (
+                                <h4>Jason ta mère est une pute!</h4>
+                            )
+                        }
                     </div>
                     <div className="profile-infos-edit-container d-flex align-items-end">
                         <a href="" className="d-flex align-items-center">

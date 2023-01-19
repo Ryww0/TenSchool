@@ -20,6 +20,10 @@
         <script>
             userID = {{ app.user.id }};
         </script>
+    {% else %}
+        <script>
+            userID = null;
+        </script>
     {% endif %}
     {{ encore_entry_script_tags('app') }}
 {% endblock %}

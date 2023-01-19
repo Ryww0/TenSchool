@@ -10,10 +10,6 @@ import Dashboard from "./Components/dashboard/Dashboard";
 import Header from "./Components/header/header";
 import Profil from "./Components/Profil";
 
-const API_URL = 'http://localhost:8000/api';
-
-const THIS_URL = window.location.href;
-
 const imgNavbar = `build/images/logo_ten_header.png`;
 
 function App() {

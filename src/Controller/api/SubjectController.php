@@ -45,8 +45,6 @@ class SubjectController extends AbstractController
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
-//        return $this->render('home/index.html.twig');
-
         return $response;
     }
 }
