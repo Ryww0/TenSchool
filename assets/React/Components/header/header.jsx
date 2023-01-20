@@ -7,6 +7,7 @@ function Header({imgNavbar}) {
     const [subjects, setSubjects] = useState([]);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [isAdmin, setIsAdmin] = useState(false);
+    const [user, setUser] = useState([]);
 
     // fetch to return all the subjects
     useEffect(() => {
@@ -38,6 +39,14 @@ function Header({imgNavbar}) {
             });
     }, []);
 
+    // fetch user connected
+    useEffect(() => {
+        fetch(`${API_URL}/users/${id}`)
+            .then(response => response.json())
+            .then(data => {
+                setUser(JSON.parse(data));
+            });
+    }, []);
 
     const openNavSubjects = () => {
         navSubjectsContainer.current.classList.toggle('left-nav-subjects');
@@ -77,9 +86,14 @@ function Header({imgNavbar}) {
                                             <li><Link to={`profile/${id}`}>Mon profil</Link></li>
                                             <hr/>
                                             {
-                                                isAdmin && (
+                                                isAdmin ? (
                                                     <>
                                                         <li><Link to="/admin/dashboard">Tableau de bord</Link></li>
+                                                        <hr/>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <li><Link to={`classroom/${user.classroom?.id}`}>Ma classe</Link></li>
                                                         <hr/>
                                                     </>
                                                 )

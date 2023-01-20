@@ -426,3 +426,7 @@ footer {
     }
   }
 }
+
+.classroom-page {
+  min-height: 100vh - $navbarHeight - $footerHeight;
+}

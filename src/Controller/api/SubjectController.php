@@ -33,8 +33,6 @@ class SubjectController extends AbstractController
     {
         $data = $repository->findAllLessonsBySubject($subject);
 
-        dump($data);
-
         $jsonContent = $serializer->serialize($data, 'json', [
             'circular_reference_handler' => function ($object) {
             return $object->getId();
