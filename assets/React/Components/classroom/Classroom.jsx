@@ -15,8 +15,6 @@ const Classroom = () => {
             })
     }, []);
 
-    console.log(user.classroom?.lessons)
-
     const id = userID;
 
     return (

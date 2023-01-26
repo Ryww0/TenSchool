@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\api;
 
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,12 +12,8 @@ use Symfony\Component\Serializer\SerializerInterface;
 class UserController extends AbstractController
 {
     #[Route('api/users/{user}', name: 'app_users_user')]
-    public function index(User $user, SerializerInterface $serializer): Response
+    public function index(User $user, SerializerInterface $serializer): JsonResponse
     {
-        if ($this->getUser()->getId() != $user->getId()) {
-            return $this->redirectToRoute('app_home');
-        }
-
         $jsonContent = $serializer->serialize($user, 'json', [
             'circular_reference_handler' => function ($object) {
                 return $object->getId();

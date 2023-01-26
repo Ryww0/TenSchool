@@ -14,8 +14,3 @@ import './bootstrap';
 // the templating by react
 import './React/index';
 
-// Import all my React components
-// import './React/Components/Accordion'
-// import './React/Components/Profil'
-// import './React/Components/NavOffice'
-

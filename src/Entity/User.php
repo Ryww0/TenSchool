@@ -46,9 +46,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Classroom::class)]
     private Collection $classrooms;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Test::class)]
+    private Collection $tests;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Render::class, orphanRemoval: true)]
+    private Collection $renders;
+
     public function __construct()
     {
         $this->classrooms = new ArrayCollection();
+        $this->tests = new ArrayCollection();
+        $this->renders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -193,6 +201,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($classroom->getUser() === $this) {
                 $classroom->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Test>
+     */
+    public function getTests(): Collection
+    {
+        return $this->tests;
+    }
+
+    public function addTest(Test $test): self
+    {
+        if (!$this->tests->contains($test)) {
+            $this->tests->add($test);
+            $test->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTest(Test $test): self
+    {
+        if ($this->tests->removeElement($test)) {
+            // set the owning side to null (unless already changed)
+            if ($test->getUser() === $this) {
+                $test->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Render>
+     */
+    public function getRenders(): Collection
+    {
+        return $this->renders;
+    }
+
+    public function addRender(Render $render): self
+    {
+        if (!$this->renders->contains($render)) {
+            $this->renders->add($render);
+            $render->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRender(Render $render): self
+    {
+        if ($this->renders->removeElement($render)) {
+            // set the owning side to null (unless already changed)
+            if ($render->getUser() === $this) {
+                $render->setUser(null);
             }
         }
 

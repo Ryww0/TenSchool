@@ -10,6 +10,7 @@ import Dashboard from "./Components/dashboard/Dashboard";
 import Header from "./Components/header/header";
 import Profil from "./Components/Profil";
 import Classroom from "./Components/classroom/Classroom";
+import Tests from "./Components/exam";
 
 const imgNavbar = `build/images/logo_ten_header.png`;
 
@@ -25,6 +26,7 @@ function App() {
                     <Route path="lesson/:lessonId" element={<Lesson/>}/>
                     <Route path="profile/:profileId" element={<Profil/>}/>
                     <Route path="classroom/:classroomId" element={<Classroom/>}/>
+                    <Route path="/tests" element={<Tests/>}/>
 
                     <Route path="/admin/dashboard" element={<Dashboard/>}/>
 

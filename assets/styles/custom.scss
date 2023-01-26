@@ -430,3 +430,11 @@ footer {
 .classroom-page {
   min-height: 100vh - $navbarHeight - $footerHeight;
 }
+
+.tests-page {
+  min-height: 100vh - $navbarHeight - $footerHeight;
+
+  .card-test {
+    border-left: 15px solid $darkGreen;
+  }
+}
