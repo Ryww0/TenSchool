@@ -437,4 +437,26 @@ footer {
   .card-test {
     border-left: 15px solid $darkGreen;
   }
+
+  .card-new-test {
+    background-color: $darkGreen;
+    color: $light;
+    //height: 50px;
+    padding: 0 15px !important;
+
+    .lil {
+      color: $yellow;
+      font-size: 0.8rem;
+      font-weight: lighter;
+    }
+
+    a {
+      color: $yellow;
+      text-decoration: underline;
+    }
+  }
+}
+
+.test-page {
+  min-height: 100vh - $navbarHeight - $footerHeight;
 }

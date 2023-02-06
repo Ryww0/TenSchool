@@ -86,7 +86,7 @@ function Header({imgNavbar}) {
                                             <li><Link to={`profile/${id}`}>Mon profil</Link></li>
                                             <hr/>
                                             {
-                                                isAdmin ? (
+                                                isAdmin.isAdmin ? (
                                                     <>
                                                         <li><Link to="/admin/dashboard">Tableau de bord</Link></li>
                                                         <hr/>
@@ -94,6 +94,8 @@ function Header({imgNavbar}) {
                                                 ) : (
                                                     <>
                                                         <li><Link to={`classroom/${user.classroom?.id}`}>Ma classe</Link></li>
+                                                        <hr/>
+                                                        <li><Link to={`tests`}>Mes évaluations</Link></li>
                                                         <hr/>
                                                     </>
                                                 )

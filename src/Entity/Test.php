@@ -19,9 +19,6 @@ class Test
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\ManyToMany(targetEntity: Classroom::class, inversedBy: 'tests')]
-    private Collection $classrooms;
-
     #[ORM\ManyToOne(inversedBy: 'tests')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
@@ -33,16 +30,22 @@ class Test
     private Collection $questions;
 
     #[ORM\Column]
-    private ?bool $available = null;
+    private ?bool $available;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $startDate = null;
 
+    #[ORM\Column]
+    private ?int $duration = null;
+
+    #[ORM\ManyToMany(targetEntity: Classroom::class, inversedBy: 'tests')]
+    private Collection $classrooms;
+
     public function __construct()
     {
-        $this->classrooms = new ArrayCollection();
         $this->renders = new ArrayCollection();
         $this->questions = new ArrayCollection();
+        $this->classrooms = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -62,41 +65,6 @@ class Test
         return $this;
     }
 
-    /**
-     * @return Collection<int, Classroom>
-     */
-    public function getClassrooms(): Collection
-    {
-        return $this->classrooms;
-    }
-
-    public function addClassroom(Classroom $classroom): self
-    {
-        if (!$this->classrooms->contains($classroom)) {
-            $this->classrooms->add($classroom);
-        }
-
-        return $this;
-    }
-
-    public function removeClassroom(Classroom $classroom): self
-    {
-        $this->classrooms->removeElement($classroom);
-
-        return $this;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Render>
@@ -178,6 +146,42 @@ class Test
     public function setStartDate(\DateTimeInterface $startDate): self
     {
         $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    public function getDuration(): ?int
+    {
+        return $this->duration;
+    }
+
+    public function setDuration(int $duration): self
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Classroom>
+     */
+    public function getClassrooms(): Collection
+    {
+        return $this->classrooms;
+    }
+
+    public function addClassroom(Classroom $classroom): self
+    {
+        if (!$this->classrooms->contains($classroom)) {
+            $this->classrooms->add($classroom);
+        }
+
+        return $this;
+    }
+
+    public function removeClassroom(Classroom $classroom): self
+    {
+        $this->classrooms->removeElement($classroom);
 
         return $this;
     }

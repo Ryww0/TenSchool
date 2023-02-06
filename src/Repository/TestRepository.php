@@ -42,23 +42,15 @@ class TestRepository extends ServiceEntityRepository
 //    /**
 //     * @return Test[] Returns an array of Test objects
 //     */
-    public function findAllByUser($value): array
+    public function findAllByClassroom($value): array
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.user = :val')
-            ->setParameter('val', $value)
+            ->join('t.classrooms', 'c')
+            ->Where('c.id = :val')
+            ->setParameter(':val', $value)
+            ->orderBy('t.startDate', 'DESC')
             ->getQuery()
             ->getResult()
         ;
     }
-
-//    public function findOneBySomeField($value): ?Test
-//    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }

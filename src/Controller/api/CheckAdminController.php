@@ -17,7 +17,6 @@ class CheckAdminController extends AbstractController
         $this->security = $security;
     }
 
-    #[IsGranted('ROLE_ADMIN')]
     #[Route('/api/check-admin', name: 'app_check-admin')]
     public function __invoke(): JsonResponse
     {

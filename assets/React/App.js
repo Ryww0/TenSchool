@@ -11,6 +11,7 @@ import Header from "./Components/header/header";
 import Profil from "./Components/Profil";
 import Classroom from "./Components/classroom/Classroom";
 import Tests from "./Components/exam";
+import Test from "./Components/exam/exam";
 
 const imgNavbar = `build/images/logo_ten_header.png`;
 
@@ -27,6 +28,8 @@ function App() {
                     <Route path="profile/:profileId" element={<Profil/>}/>
                     <Route path="classroom/:classroomId" element={<Classroom/>}/>
                     <Route path="/tests" element={<Tests/>}/>
+                    <Route path="/test/:testID" element={<Test/>}/>
+
 
                     <Route path="/admin/dashboard" element={<Dashboard/>}/>
 
