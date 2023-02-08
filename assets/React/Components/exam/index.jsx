@@ -34,7 +34,7 @@ const Tests = () => {
                                 {
                                     test.available ? (
                                         <div>
-                                            <Link to={`test/${test.id}`}>c'est parti !</Link>
+                                            <Link to={`/test/${test.id}`}>c'est parti !</Link>
                                         </div>
                                     ) : (
                                         <div>

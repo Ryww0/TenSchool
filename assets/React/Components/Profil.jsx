@@ -28,8 +28,6 @@ const Profile = () => {
             });
     }, []);
 
-    console.log(user.classroom)
-
     const id = userID;
 
     return (
@@ -47,7 +45,7 @@ const Profile = () => {
                             isAdmin ? (
                                 <ul>
                                     {
-                                        user.classrooms.map(c => (
+                                        user.classrooms?.map(c => (
                                             <li>{c.name}</li>
                                         ))
                                     }

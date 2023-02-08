@@ -9,9 +9,11 @@ const Test = () => {
     const {testID} = useParams();
     const [test, setTest] = useState([]);
     const [formData, setFormData] = useState([])
+    const [i, setI] = useState(1);
+    const [j, setJ] = useState(0);
 
     const handleChange = (event) => {
-        setFormData({ ...formData, [event.target.name]: event.target.value });
+        setFormData({...formData, [event.target.name]: event.target.value});
     };
 
     useEffect(() => {
@@ -25,23 +27,17 @@ const Test = () => {
             });
     }, [testID])
 
-    let i = 0
-
-    const incrementI = () => {
-        i++
-    }
-
     const handleSubmit = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         fetch("http://127.0.0.1:8000/api/test/7/render/new", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json"},
             body: JSON.stringify(formData),
         })
             .then((response) => response.json())
             .then((data) => {
                 console.log("Success:", data);
-                console.log(JSON.stringify(formData))
+                navigate('/tests');
             })
             .catch((error) => {
                 console.error("Error:", error);
@@ -53,18 +49,24 @@ const Test = () => {
             <div>
                 <h2>Évaluation</h2>
                 <h1>{test.title}</h1>
-                <form method="post" onSubmit={handleSubmit} action="http://127.0.0.1:8000/api/test/7/render/new">
+                <div>
+                    <label htmlFor={i}>Question {i}: {test.questions?.[j].content}</label>
+                    <textarea onChange={handleChange} name={i}></textarea>
                     {
-                        test.questions?.map(question => (
-                            <div key={question.id} className="d-flex flex-column">
-                                {incrementI()}
-                                <label htmlFor={question.id}>Question {i}: {question.content}</label>
-                                <input name={question.id} type="text" onChange={handleChange}/>
-                            </div>
-                        ))
+                        i < test.questions?.length ? (
+                            <button onClick={() => {
+                                setI(i + 1);
+                                setJ(j + 1)
+                            }}>Suivant
+                            </button>
+                        ) : (
+                            <button onClick={() => {
+                                handleSubmit()
+                            }}>Envoyer
+                            </button>
+                        )
                     }
-                    <input type="submit"/>
-                </form>
+                </div>
             </div>
         </div>
     )
