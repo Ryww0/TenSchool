@@ -42,11 +42,11 @@ const Profile = () => {
                             className="text-capitalize">{user.firstname}</span>
                         </h3>
                         {
-                            isAdmin ? (
+                            isAdmin.isAdmin ? (
                                 <ul>
                                     {
                                         user.classrooms?.map(c => (
-                                            <li>{c.name}</li>
+                                            <li key={c.id}>{c.name}</li>
                                         ))
                                     }
                                 </ul>
