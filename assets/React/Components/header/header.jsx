@@ -1,4 +1,4 @@
-import React, {createRef, useEffect, useState} from "react";
+import React, { useEffect, useState} from "react";
 import {Link, NavLink} from "react-router-dom";
 
 const API_URL = 'http://127.0.0.1:8000/api';
@@ -58,6 +58,11 @@ function Header({imgNavbar}) {
         profileMenu.current.classList.toggle('active');
     }
 
+    const closeProfileMenu = () => {
+        profileMenu.current.classList.add('d-none');
+        profileMenu.current.classList.remove('active');
+    }
+
     const navSubjectsContainer = React.useRef();
     const navSubjectsCaret = React.useRef();
     const profileMenu = React.useRef();
@@ -83,19 +88,19 @@ function Header({imgNavbar}) {
                                         </li>
                                         <ul className="profil-dropdown-menu d-none position-absolute pe-3"
                                             ref={profileMenu}>
-                                            <li><Link to={`profile/${id}`}>Mon profil</Link></li>
+                                            <li><Link onClick={() => closeProfileMenu()} to={`profile/${id}`}>Mon profil</Link></li>
                                             <hr/>
                                             {
                                                 isAdmin.isAdmin ? (
                                                     <>
-                                                        <li><Link to="/admin/dashboard">Tableau de bord</Link></li>
+                                                        <li><Link onClick={() => closeProfileMenu()} to="/admin/dashboard">Tableau de bord</Link></li>
                                                         <hr/>
                                                     </>
                                                 ) : (
                                                     <>
-                                                        <li><Link to={`classroom/${user.classroom?.id}`}>Ma classe</Link></li>
+                                                        <li><Link onClick={() => closeProfileMenu()} to={`classroom/${user.classroom?.id}`}>Ma classe</Link></li>
                                                         <hr/>
-                                                        <li><Link to={`tests`}>Mes évaluations</Link></li>
+                                                        <li><Link onClick={() => closeProfileMenu()} to={`tests`}>Mes évaluations</Link></li>
                                                         <hr/>
                                                     </>
                                                 )

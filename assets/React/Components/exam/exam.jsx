@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState} from "react";
+import React, { useEffect, useRef, useState} from "react";
 import {useNavigate, useParams} from "react-router-dom";
 import login from "../login/Login";
 
@@ -11,6 +11,8 @@ const Test = () => {
     const [formData, setFormData] = useState([])
     const [i, setI] = useState(1);
     const [j, setJ] = useState(0);
+
+    const area = useRef();
 
     const handleChange = (event) => {
         setFormData({...formData, [event.target.name]: event.target.value});
@@ -44,23 +46,32 @@ const Test = () => {
             });
     };
 
+    const resetArea = () => {
+        area.current.value = "";
+    }
+
     return (
-        <div className="container test-page d-flex align-items-center">
+        <div className="container test-page">
             <div>
+                <div>
                 <h2>Évaluation</h2>
                 <h1>{test.title}</h1>
-                <div>
-                    <label htmlFor={i}>Question {i}: {test.questions?.[j].content}</label>
-                    <textarea onChange={handleChange} name={i}></textarea>
+                </div>
+                <div className="d-flex flex-column align-items-end test-page-content"
+                >
+                    <h4>Question {i}</h4>
+                    <label htmlFor={i}>{test.questions?.[j].content}</label>
+                    <textarea ref={area} onChange={handleChange} name={i}></textarea>
                     {
                         i < test.questions?.length ? (
-                            <button onClick={() => {
+                            <button className="button-test" onClick={() => {
                                 setI(i + 1);
-                                setJ(j + 1)
+                                setJ(j + 1);
+                                resetArea();
                             }}>Suivant
                             </button>
                         ) : (
-                            <button onClick={() => {
+                            <button className="button-test" onClick={() => {
                                 handleSubmit()
                             }}>Envoyer
                             </button>

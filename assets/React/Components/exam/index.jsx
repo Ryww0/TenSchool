@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 
 const Tests = () => {
     const [tests, setTests] = useState([]);
-    console.log(tests);
 
     const API_URL = 'http://127.0.0.1:8000/api';
     const id = userID;
