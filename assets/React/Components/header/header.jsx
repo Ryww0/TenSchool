@@ -20,7 +20,7 @@ function Header({imgNavbar}) {
                 console.log(error);
             });
     }, []);
-
+    
     // fetch to return a bool if user is admin or not
     useEffect(() => {
         fetch(`${API_URL}/check-admin`)

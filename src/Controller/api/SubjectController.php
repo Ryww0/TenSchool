@@ -13,9 +13,14 @@ use Symfony\Component\Serializer\SerializerInterface;
 class SubjectController extends AbstractController
 {
     #[Route('/api/subjects', name: 'app_api_subjects')]
-    public function allSubjects(SerializerInterface $serializer, SubjectRepository $repository): JsonResponse
+    public function allSubjects(SerializerInterface $serializer, SubjectRepository $repository)
     {
-        $subjects = $repository->findAll();
+        if ($this->getUser()) {
+            $subjects = $repository->findAllSubjectWhereUserConnectedClassroomIdIsEqualToClassroomId($this->getUser()->getClassroom());
+            dump($this->getUser());
+        } else {
+            $subjects = null;
+        }
 
         $jsonContent = $serializer->serialize($subjects, 'json', [
             'groups' => ['subject']
@@ -35,8 +40,8 @@ class SubjectController extends AbstractController
 
         $jsonContent = $serializer->serialize($data, 'json', [
             'circular_reference_handler' => function ($object) {
-            return $object->getId();
-        },
+                return $object->getId();
+            },
             'ignore_null' => true]);
 
         $response = new JsonResponse($jsonContent);

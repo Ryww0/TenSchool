@@ -44,7 +44,6 @@ class SubjectRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('s');
 
         $queryBuilder
-            ->select('s as subject') // I want all subjects
             ->join("App\Entity\Lesson", "lesson", Join::WITH, 's.id = lesson.subject') // joined lesson
             ->join('lesson.classrooms', 'classroom')
             ->where('classroom.id = :user')
