@@ -93,7 +93,7 @@ function Header({imgNavbar}) {
                                             {
                                                 isAdmin.isAdmin ? (
                                                     <>
-                                                        <li><Link onClick={() => closeProfileMenu()} to="/admin/dashboard">Tableau de bord</Link></li>
+                                                        <li><a onClick={() => closeProfileMenu()} href="/admin/dashboard">Tableau de bord</a></li>
                                                         <hr/>
                                                     </>
                                                 ) : (

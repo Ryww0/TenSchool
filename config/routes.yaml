@@ -7,3 +7,6 @@ _index:
 _index2:
     path: /{path}/{path2}
     controller: App\Controller\HomeController::index
+_index3:
+    path: /{path}/{path2}/{path3}
+    controller: App\Controller\HomeController::index

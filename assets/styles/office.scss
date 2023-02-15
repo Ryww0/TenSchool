@@ -1,0 +1,54 @@
+.nav-office {
+  position: absolute;
+  top: 0;
+  width: 15vw;
+  height: 100vh;
+  background: $darkGreen;
+  color: $regularGreen;
+
+  a {
+    color: $regularGreen;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  img {
+    height: 2rem;
+  }
+
+  .office-menu {
+    font-weight: lighter;
+    padding: 0 15px !important;
+
+    .active {
+      width: 100%;
+      background: $yellowAlpha;
+      border-radius: 5px;
+    }
+  }
+}
+
+.office {
+    width: 100vw - 15vw;
+    margin-left: auto;
+  padding: 0 5vw !important;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .button-create {
+    color: $darkGreen;
+    background: $yellow;
+    padding: 0 20px !important;
+    height: 2rem;
+    border-radius: 2rem;
+
+    svg {
+      width: 18px;
+      height: 32px;
+    }
+  }
+}

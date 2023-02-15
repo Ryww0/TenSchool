@@ -6,13 +6,14 @@ import Footer from "./Components/footer/footer";
 import Subject from "./Components/Subject/Subject";
 import Lesson from "./Components/lesson/Lesson";
 import ErrorPage from "./Components/404/ErrorPage";
-import Dashboard from "./Components/dashboard/Dashboard";
 import Header from "./Components/header/header";
 import Profil from "./Components/Profil";
 import Classroom from "./Components/classroom/Classroom";
 import Tests from "./Components/exam";
 import Test from "./Components/exam/exam";
 import HeaderOffice from "./Components/dashboard/HeaderOffice";
+import IndexExam from "./Components/dashboard/Exam";
+import IndexUser from './Components/dashboard/User';
 
 const imgNavbar = `build/images/logo_ten_header.png`;
 
@@ -38,11 +39,17 @@ function App() {
                     <Route path="/test/:testID" element={<Test/>}/>
 
 
-                    <Route path="/admin/dashboard" element={<Dashboard/>}/>
+                    <Route path="/admin/dashboard" element={<IndexExam/>}/>
+                    <Route path="/admin/dashboard/tests" element={<IndexExam/>}/>
+                    <Route path="/admin/dashboard/users" element={<IndexUser/>}/>
 
                     <Route path="*" element={<ErrorPage/>}/>
                 </Routes>
-                <Footer/>
+                {
+                    window.location.pathname.indexOf('admin') > -1 ? ('') : (
+                        <Footer/>
+                    )
+                }
             </Router>
         </>
     )

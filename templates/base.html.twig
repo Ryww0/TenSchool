@@ -12,9 +12,9 @@
 </head>
 <body>
 {# {% include './partials/header.html.twig' %} #}
-<main>
-    {% block body %}{% endblock %}
-</main>
+
+{% block body %}{% endblock %}
+
 {% block javascripts %}
     {% if app.user.id is defined %}
         <script>

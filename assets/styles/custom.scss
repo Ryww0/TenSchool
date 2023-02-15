@@ -5,6 +5,7 @@ $lightGreen: #AED6BF;
 $lightGreenAlpha: rgba(174, 214, 191, 0.3);
 $regularGreen: #68BC8D;
 $yellow: #93d74b;
+$yellowAlpha: rgba(147, 215, 75, 0.18);
 $regularGreenAlpha: rgba(104, 188, 141, 0.9);
 $darkGreen: #1B4332;
 $darkGreenAlpha: rgba(27, 67, 50, 0.9);
@@ -14,6 +15,8 @@ $light: #EDF2F4;
 $navbarHeight: 10vh;
 $footerHeight: 25vh;
 $navOfficeWidth: 16vw;
+
+@import "office";
 
 * {
   margin: 0;
@@ -44,6 +47,10 @@ ul {
 
 hr {
   margin: 0 !important;
+}
+
+.office-icon {
+  width: 18px;
 }
 
 body {
@@ -82,22 +89,20 @@ body {
 
   .profil-dropdown-menu {
     background-color: $regularGreen;
-    padding-top: 5px !important;
+    padding: 5px 10px !important;
     right: 0;
     top: 100%;
     opacity: 100%;
-    animation: dropdown 300ms ease-in;
+    animation: dropdown 200ms ease-in;
 
     @keyframes dropdown {
       0% {
-        top: 0;
         opacity: 0;
       }
       35% {
         opacity: 10%;
       }
       100% {
-        top: 100%;
         opacity: 100%;
       }
     }
@@ -299,60 +304,6 @@ footer {
   }
 }
 
-.nav-office {
-  height: 100vh;
-  width: $navOfficeWidth;
-  margin-top: -$navbarHeight;
-  background-color: $darkGreen;
-  color: $regularGreen;
-  position: absolute;
-
-  .nav-office-item {
-    height: 30px;
-    text-align: center;
-    cursor: pointer;
-  }
-
-  .nav-office-header {
-    padding: 20px 0 !important;
-    border-bottom: 1px $regularGreen solid;
-
-    img {
-      height: 50px;
-    }
-  }
-
-  .nav-office-menu {
-
-    .nav-office-item {
-
-      .nav-office-link {
-        color: $regularGreen;
-        padding: 3px 0 !important;
-        border-radius: 5px;
-        display: inline-block;
-        height: auto;
-        //width: $navOfficeWidth * 0.65;
-        width: 65%;
-      }
-
-      .active {
-        background: $lightGreenAlpha;
-      }
-    }
-  }
-
-  .nav-office-sub-menu {
-    background: $regularGreen;
-    color: $darkGreen;
-  }
-}
-
-.office {
-  width: 100vw - $navOfficeWidth;
-  margin-left: auto;
-}
-
 .home-welcome {
   height: 400px;
   margin: 200px 0;
@@ -478,7 +429,7 @@ footer {
       text-align: right;
       line-height: 1;
     }
-    
+
     label {
       font-size: 1.7rem;
     }
@@ -491,6 +442,7 @@ footer {
       border: none !important;
       border-radius: 80px;
       margin: 10px;
-      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);    }
+      box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+    }
   }
 }
