@@ -12,6 +12,7 @@ import Profil from "./Components/Profil";
 import Classroom from "./Components/classroom/Classroom";
 import Tests from "./Components/exam";
 import Test from "./Components/exam/exam";
+import HeaderOffice from "./Components/dashboard/HeaderOffice";
 
 const imgNavbar = `build/images/logo_ten_header.png`;
 
@@ -20,7 +21,13 @@ function App() {
     return (
         <>
             <Router>
-                <Header imgNavbar={imgNavbar}/>
+                {
+                    window.location.pathname.indexOf('admin') > -1 ? (
+                        <HeaderOffice/>
+                    ) : (
+                        <Header imgNavbar={imgNavbar}/>
+                    )
+                }
                 <Routes>
                     <Route path="/" element={<Home/>}/>
                     <Route path="subject/:subjectId" element={<Subject/>}/>
