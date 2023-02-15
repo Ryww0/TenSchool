@@ -14,7 +14,7 @@ const Classroom = () => {
                 setUser(JSON.parse(data))
             })
     }, []);
-
+    console.log(user)
     const id = userID;
 
     return (
@@ -29,9 +29,14 @@ const Classroom = () => {
                 <div className="col-md-5">
                     <h4>Tous les élèves</h4>
                     <ul className="d-flex flex-wrap">
+                        <li className="col-md-4" key={user.id}><span className="text-capitalize">{user.firstname}</span> <span className="text-uppercase">{user.lastname}</span></li>
                         {
-                            user.classroom?.users.map(user => (
-                                <li key={user}>{user}</li>
+                            user.classroom?.users?.map(u => (
+
+                                u.id && (
+                                    <li className="col-md-4" key={u.id}><span className="text-capitalize">{u.firstname}</span> <span className="text-uppercase">{u.lastname}</span></li>
+                                )
+
                             ))
                         }
                     </ul>
@@ -41,7 +46,7 @@ const Classroom = () => {
                     <ul className="d-flex flex-wrap">
                         {
                             user.classroom?.lessons.map(lesson => (
-                                    <li className="m-2" key={lesson.id}>{lesson.title}</li>
+                                <li className="col-md-4" key={lesson.id}>{lesson.title}</li>
                             ))
                         }
                     </ul>

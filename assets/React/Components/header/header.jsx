@@ -20,7 +20,7 @@ function Header({imgNavbar}) {
                 console.log(error);
             });
     }, []);
-    
+
     // fetch to return a bool if user is admin or not
     useEffect(() => {
         fetch(`${API_URL}/check-admin`)
@@ -119,7 +119,7 @@ function Header({imgNavbar}) {
                     <nav className="nav-subjects d-flex flex-column justify-content-end text-end">
                         <ul>
                             {
-                                subjects.map(subject => (
+                                subjects?.map(subject => (
                                     <li key={subject.id} className="nav-subjects-link">
                                         <NavLink className="pe-5" to={`subject/${subject.id}`}>{subject.title}</NavLink>
                                     </li>

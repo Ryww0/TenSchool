@@ -1,0 +1,21 @@
+App\Entity\User:
+    user0:
+      email: 's.jobs@ten.fr'
+      password: '\$2y\$13\$yywqA.n2E98V6Kqntv.PguVp92sOx7Gb5/isycOyoOUNOiarg5yYm'
+      lastname: 'jobs'
+      firstname: 'steeve'
+      roles: ['ROLE_ADMIN']
+    user1:
+      email: 'l.chaitas@ten.fr'
+      password: '\$2y\$13\$PkotTZYV6IKnNT2y2hv9.uBsl3YYdosze95XCaPvVATp0DpRpZo8u'
+      lastname: 'chaitas'
+      firstname: 'laurent'
+      roles: ['ROLE_USER']
+      classroom: '@classroom0'
+    user_{2..21}:
+      email: <email()>
+      password: '\$2y\$13\$PkotTZYV6IKnNT2y2hv9.uBsl3YYdosze95XCaPvVATp0DpRpZo8u'
+      lastname: <lastName()>
+      firstname: <firstName()>
+      roles: ['ROLE_USER']
+      classroom: '@classroom0'

@@ -1,0 +1,15 @@
+App\Entity\Lesson:
+  lesson0:
+    title: 'Découverte HTML'
+    dateCreated: <dateTime('now')>
+    description: <realText(255)>
+    content: <paragraphs(3, true)>
+    subject: '@subject0'
+    classrooms: ['@classroom0']
+  lesson_{1..9}:
+    title: <words(3, true)>
+    dateCreated: <dateTime('now')>
+    description: <realText(255)>
+    content: <paragraphs(3, true)>
+    subject: '@subject*'
+    classrooms: ['@classroom0']

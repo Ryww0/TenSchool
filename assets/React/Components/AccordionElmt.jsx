@@ -24,7 +24,7 @@ class AccordionElmt extends Component {
                 <div className="home-accordion-container d-flex flex-column justify-content-center mt-3 mb-3">
                     <div
                         className="home-accordion-title d-flex align-items-center justify-content-between">
-                        <h3>{this.props.title}</h3>
+                        <h4>{this.props.title}</h4>
                         <div onClick={() => this.openDiv()}>
                             <CrossSvg props={this.state.svg}/>
                         </div>

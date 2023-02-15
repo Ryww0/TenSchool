@@ -1,0 +1,8 @@
+App\Entity\Subject:
+  subject0:
+    title: 'html'
+  subject1:
+    title: 'css'
+  subject2:
+    title: 'bootstrap'
+    subject: '@subject1'
