@@ -10,3 +10,6 @@ _index2:
 _index3:
     path: /{path}/{path2}/{path3}
     controller: App\Controller\HomeController::index
+_index4:
+    path: /{path}/{path2}/{path3}/{path4}
+    controller: App\Controller\HomeController::index

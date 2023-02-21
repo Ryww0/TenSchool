@@ -51,4 +51,26 @@
       height: 32px;
     }
   }
+
+  .create-form {
+    input {
+      height: 70px;
+      border-radius: 70px;
+      border: none;
+      margin: 5px 0;
+      padding: 0 15px !important;
+    }
+
+    button {
+      display: inline-block !important;
+      background: $yellow;
+      color: $darkGreen;
+      border: none;
+      height: 70px;
+      border-radius: 70px;
+      margin: 5px 0;
+      font-weight: 600;
+      padding: 0 15px !important;
+    }
+  }
 }

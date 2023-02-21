@@ -32,20 +32,17 @@ class Test
     #[ORM\Column]
     private ?bool $available;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    private ?\DateTimeInterface $startDate = null;
-
     #[ORM\Column]
     private ?int $duration = null;
 
-    #[ORM\ManyToMany(targetEntity: Classroom::class, inversedBy: 'tests')]
-    private Collection $classrooms;
+    #[ORM\OneToMany(mappedBy: 'test', targetEntity: SessionTest::class)]
+    private Collection $sessionTests;
 
     public function __construct()
     {
         $this->renders = new ArrayCollection();
         $this->questions = new ArrayCollection();
-        $this->classrooms = new ArrayCollection();
+        $this->sessionTests = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -65,6 +62,17 @@ class Test
         return $this;
     }
 
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
 
     /**
      * @return Collection<int, Render>
@@ -138,18 +146,6 @@ class Test
         return $this;
     }
 
-    public function getStartDate(): ?\DateTimeInterface
-    {
-        return $this->startDate;
-    }
-
-    public function setStartDate(\DateTimeInterface $startDate): self
-    {
-        $this->startDate = $startDate;
-
-        return $this;
-    }
-
     public function getDuration(): ?int
     {
         return $this->duration;
@@ -163,25 +159,31 @@ class Test
     }
 
     /**
-     * @return Collection<int, Classroom>
+     * @return Collection<int, SessionTest>
      */
-    public function getClassrooms(): Collection
+    public function getSessionTests(): Collection
     {
-        return $this->classrooms;
+        return $this->sessionTests;
     }
 
-    public function addClassroom(Classroom $classroom): self
+    public function addSessionTest(SessionTest $sessionTest): self
     {
-        if (!$this->classrooms->contains($classroom)) {
-            $this->classrooms->add($classroom);
+        if (!$this->sessionTests->contains($sessionTest)) {
+            $this->sessionTests->add($sessionTest);
+            $sessionTest->setTest($this);
         }
 
         return $this;
     }
 
-    public function removeClassroom(Classroom $classroom): self
+    public function removeSessionTest(SessionTest $sessionTest): self
     {
-        $this->classrooms->removeElement($classroom);
+        if ($this->sessionTests->removeElement($sessionTest)) {
+            // set the owning side to null (unless already changed)
+            if ($sessionTest->getTest() === $this) {
+                $sessionTest->setTest(null);
+            }
+        }
 
         return $this;
     }

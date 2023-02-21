@@ -42,17 +42,15 @@ class ClassroomRepository extends ServiceEntityRepository
 //    /**
 //     * @return Classroom[] Returns an array of Classroom objects
 //     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function findAllByUser($value): array
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.user = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    public function findOneBySomeField($value): ?Classroom
 //    {

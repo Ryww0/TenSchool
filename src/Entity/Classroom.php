@@ -27,14 +27,14 @@ class Classroom
     #[ORM\ManyToMany(targetEntity: Lesson::class, inversedBy: 'classrooms')]
     private Collection $lessons;
 
-    #[ORM\ManyToMany(targetEntity: Test::class, mappedBy: 'classrooms')]
-    private Collection $tests;
+    #[ORM\OneToMany(mappedBy: 'classroom', targetEntity: SessionTest::class)]
+    private Collection $sessionTests;
 
     public function __construct()
     {
         $this->lessons = new ArrayCollection();
         $this->users = new ArrayCollection();
-        $this->tests = new ArrayCollection();
+        $this->sessionTests = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -121,27 +121,30 @@ class Classroom
     }
 
     /**
-     * @return Collection<int, Test>
+     * @return Collection<int, SessionTest>
      */
-    public function getTests(): Collection
+    public function getSessionTests(): Collection
     {
-        return $this->tests;
+        return $this->sessionTests;
     }
 
-    public function addTest(Test $test): self
+    public function addSessionTest(SessionTest $sessionTest): self
     {
-        if (!$this->tests->contains($test)) {
-            $this->tests->add($test);
-            $test->addClassroom($this);
+        if (!$this->sessionTests->contains($sessionTest)) {
+            $this->sessionTests->add($sessionTest);
+            $sessionTest->setClassroom($this);
         }
 
         return $this;
     }
 
-    public function removeTest(Test $test): self
+    public function removeSessionTest(SessionTest $sessionTest): self
     {
-        if ($this->tests->removeElement($test)) {
-            $test->removeClassroom($this);
+        if ($this->sessionTests->removeElement($sessionTest)) {
+            // set the owning side to null (unless already changed)
+            if ($sessionTest->getClassroom() === $this) {
+                $sessionTest->setClassroom(null);
+            }
         }
 
         return $this;
