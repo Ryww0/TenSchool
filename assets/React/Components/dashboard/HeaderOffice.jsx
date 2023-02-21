@@ -9,7 +9,7 @@ const HeaderOffice = () => {
     return (
         <nav className="nav-office">
             <div className="d-flex align-items-center justify-content-start">
-                <img src="../build/images/logo_ten_header.png" alt="logo site"/>
+                <img src="/build/images/logo_ten_header.png" alt="logo site"/>
                 <Link to="/admin/dashboard">tenschool</Link>
             </div>
             <div className='mt-5'>

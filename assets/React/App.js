@@ -14,8 +14,9 @@ import Test from "./Components/exam/exam";
 import HeaderOffice from "./Components/dashboard/HeaderOffice";
 import IndexExam from "./Components/dashboard/Exam";
 import IndexUser from './Components/dashboard/User';
+import NewTest from "./Components/dashboard/Exam/New";
 
-const imgNavbar = `build/images/logo_ten_header.png`;
+const imgNavbar = "/build/images/logo_ten_header.png";
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
 
                     <Route path="/admin/dashboard" element={<IndexExam/>}/>
                     <Route path="/admin/dashboard/tests" element={<IndexExam/>}/>
+                    <Route path="/admin/dashboard/test/create" element={<NewTest/>}/>
                     <Route path="/admin/dashboard/users" element={<IndexUser/>}/>
 
                     <Route path="*" element={<ErrorPage/>}/>
