@@ -2,6 +2,7 @@
 
 namespace App\Controller\api\Back;
 
+use App\Entity\Question;
 use App\Entity\Test;
 use App\Repository\ClassroomRepository;
 use App\Repository\QuestionRepository;
@@ -42,24 +43,37 @@ class TestController extends AbstractController
         $rqData = $request->getContent();
         $data = json_decode($rqData, true);
 
+        dump($rqData);
+        dump($data);
+//        dump(json_decode('[{"title":"tert","duration":"2323"},{"0":"ffff","1":"erte","2":"terte"}]'));
+
         // process form data and init Test
         $test = new Test();
         $test
             ->setUser($this->getUser())
-            ->setTitle($data[0]['title'])
+            ->setTitle($data[0]["title"])
+//            ->setTitle($data['title'])
             ->setAvailable(false)
-            ->setDuration($data[0]['duration'])
-        ;
-
-        foreach ($data[1] as $question) {
-            $test->addQuestion($questionRepository->find($question));
-        }
-
+            ->setDuration($data[0]['duration']);
 
         // Save Test in DB
         $em = $doctrine->getManager();
         $em->persist($test);
         $em->flush();
+
+        foreach ($data[1] as $question) {
+            // Create and init new Question
+            $q = new Question();
+            $q->setContent($question);
+
+            // Link between Test and Question
+            $q->setTest($test);
+
+            // Push Question in the DB
+            $em = $doctrine->getManager();
+            $em->persist($q);
+            $em->flush();
+        }
 
         return new JsonResponse([
             'message' => $data

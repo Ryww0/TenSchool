@@ -19,7 +19,7 @@ const New = () => {
         setFormDataQuestion({...formDataQuestion, [event.target.name]: event.target.value});
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
         fetch("http://127.0.0.1:8000/api/back/test/new", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
@@ -41,21 +41,10 @@ const New = () => {
         questionInput.current.value = "";
     }
 
-    useEffect(() => {
-        fetch(`${API_URL}/classrooms/user/${userID}`)
-            .then((response) => response.json())
-            .then(data => {
-                setClassrooms(JSON.parse(data))
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    }, [])
-
     return (
         <main className="office">
 
-            <div className="d-flex flex-column create-form">
+            <div className="d-flex flex-column create-form" onSubmit={() => handleSubmit()} action="/api/back/test/new" method="POST">
                 {/*<label htmlFor="title">Titre</label>*/}
                 <input onChange={handleChange} type="text" name="title" placeholder="insérer un titre"/>
 
@@ -64,11 +53,11 @@ const New = () => {
 
                 <div className='d-flex'>
                     <input ref={questionInput} onChange={handleChangeQuestion} className="m-1" type="text"
-                           name={'question ' + i}
+                           name={i}
                            placeholder="Question"/>
                     <button onClick={changeQuestion}>Add question</button>
                 </div>
-
+                {/*<input type="submit"/>*/}
                 <button onClick={() => handleSubmit()}>Envoyer</button>
             </div>
         </main>
